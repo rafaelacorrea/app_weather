@@ -25,4 +25,10 @@ defmodule App.Weather.Test do
     result = App.Weather.temperature_of("00000")
     assert result == "00000 not found"
   end
+
+  test "should return the start PID Belém" do
+    result = App.Weather.start(["Belém"])
+    [{_pid, city}] = result
+    assert city == "Belém"
+    end
 end

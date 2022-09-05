@@ -2,7 +2,7 @@
 /_build/
 
 # If you run "mix test --cover", coverage assets end up here.
-/cover/
+cover/
 
 # The directory Mix downloads your dependencies sources to.
 /deps/
@@ -24,3 +24,6 @@ app-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Ignore .elixir_ls
+.elixir_ls

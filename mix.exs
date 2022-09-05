@@ -7,7 +7,15 @@ defmodule App.MixProject do
       version: "0.1.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.json": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -22,7 +30,8 @@ defmodule App.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.0"},
-      {:json, "~> 1.4.0"}
+      {:json, "~> 1.4.0"},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 end
