@@ -54,7 +54,7 @@ defmodule App.Weather do
       {:ok, temp} ->
         results = [temp | cities]
 
-        if Enum.count(results) == total  do
+        if Enum.count(results) == total do
           send(self(), :exit)
         end
 

@@ -30,5 +30,5 @@ defmodule App.Weather.Test do
     result = App.Weather.start(["Belém"])
     [{_pid, city}] = result
     assert city == "Belém"
-    end
+  end
 end
