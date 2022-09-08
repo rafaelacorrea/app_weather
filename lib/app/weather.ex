@@ -1,4 +1,7 @@
 defmodule App.Weather do
+  @moduledoc """
+  This module return the weather of a location.
+  """
   def start(cities) do
     manager_pid = spawn(__MODULE__, :manager, [[], Enum.count(cities)])
 
@@ -51,7 +54,7 @@ defmodule App.Weather do
       {:ok, temp} ->
         results = [temp | cities]
 
-        if(Enum.count(results) == total) do
+        if Enum.count(results) == total  do
           send(self(), :exit)
         end
 

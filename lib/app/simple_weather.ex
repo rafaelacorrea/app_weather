@@ -1,4 +1,7 @@
 defmodule App.SimpleWeather do
+  @moduledoc """
+  This module return the weather of a location.
+  """
   @spec start([]) :: []
   def start(cities) do
     cities
