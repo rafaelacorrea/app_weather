@@ -1,6 +1,10 @@
 defmodule App.Weather.Test do
   use ExUnit.Case, async: true
 
+  import Mox
+
+  setup :verify_on_exit!
+
   @api "http://api.openweathermap.org/data/2.5/weather?q="
 
   test "should return a encoded endpoint when take a location" do
@@ -17,12 +21,23 @@ defmodule App.Weather.Test do
   end
 
   test "should return temperature when take a valid location" do
-    temperature = App.Weather.temperature_of("Rio de Janeiro")
-    assert String.contains?(temperature, "Rio de Janeiro") == true
+    expect(WeatherBehaviourMock, :temperature_of, fn args ->
+      assert args == "Rio de janeiro"
+      args
+    end)
+
+    temperature = ClientWeather.temperature_of("Rio de janeiro")
+
+    assert String.contains?(temperature, "Rio de janeiro") == true
   end
 
   test "should return not found when take an invalid location" do
-    result = App.Weather.temperature_of("00000")
+    expect(WeatherBehaviourMock, :temperature_of, fn args ->
+      assert args == "00000"
+      "#{args} not found"
+    end)
+
+    result = ClientWeather.temperature_of("00000")
     assert result == "00000 not found"
   end
 

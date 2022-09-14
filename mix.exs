@@ -32,7 +32,8 @@ defmodule App.MixProject do
       {:httpoison, "~> 1.0"},
       {:json, "~> 1.4.0"},
       {:excoveralls, "~> 0.10", only: :test},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 end

@@ -2,6 +2,7 @@ defmodule App.Weather do
   @moduledoc """
   This module return the weather of a location.
   """
+  @behaviour ClientWeather
   def start(cities) do
     manager_pid = spawn(__MODULE__, :manager, [[], Enum.count(cities)])
 
@@ -25,6 +26,7 @@ defmodule App.Weather do
     (kelvin - 273.15) |> Float.round(1)
   end
 
+  @impl ClientWeather
   def temperature_of(location) do
     result = get_endpoint(location) |> HTTPoison.get() |> parser_response
 
