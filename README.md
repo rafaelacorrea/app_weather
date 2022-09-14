@@ -8,7 +8,7 @@ It is a app used to return the location temperature.
 ## Installation
 
 ```bash
-git clone 
+git clone git@github.com:rafaelacorrea/app_weather.git
 mix deps.get
 ```
 
